@@ -3,7 +3,7 @@ name: demo_package_project
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   release:
