@@ -28,7 +28,7 @@ jobs:
         if: steps.pubspec.outputs.changed == 0
       - run: npm install -g "@semantic-release/changelog"
       - run: npm install -g "@semantic-release/git"
-      - run: npm install -g "semantic-release-dart"
+      - run: npm install -g "pub-semantic-release"
 
       - name: Bump version
         # if: steps.pubspec.outputs.changed == 0
