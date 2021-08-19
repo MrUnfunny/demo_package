@@ -73,6 +73,6 @@ jobs:
           skip_test: true
         
       - name: Commit updated pubspec and changelog files
-      - uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update pubspec and changelog
