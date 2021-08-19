@@ -55,6 +55,7 @@ jobs:
           node-version: 14
       - run: npm install -g "@semantic-release/changelog"
       - run: npm install -g "@semantic-release/git"
+      - run: npm install -g "semantic-release-dart"
 
       - name: Bump version
         run: |
@@ -71,3 +72,4 @@ jobs:
           credential: ${{ secrets.PUB_CREDENTIALS }}
           flutter_package: true
           skip_test: true
+        
