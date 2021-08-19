@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/MrUnfunny/demo_package/compare/v1.3.1...v1.3.2) (2021-08-19)
+
+
+### Bug Fixes
+
+* fixed config ([8bdb9b2](https://github.com/MrUnfunny/demo_package/commit/8bdb9b22a6e577317f2cb23b446b03c642374301))
+
 ## [1.3.1](https://github.com/MrUnfunny/demo_package/compare/v1.3.0...v1.3.1) (2021-08-19)
 
 
