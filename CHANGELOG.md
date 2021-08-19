@@ -1,3 +1,12 @@
+## [1.3.3](https://github.com/MrUnfunny/demo_package/compare/v1.3.2...v1.3.3) (2021-08-19)
+
+
+### Bug Fixes
+
+* fixed config and workflow ([6572822](https://github.com/MrUnfunny/demo_package/commit/6572822313e1e2bd5b547a3f82be1c767931ea9f))
+* updated workflow ([8e5a5e2](https://github.com/MrUnfunny/demo_package/commit/8e5a5e2b983cf3867b873ce9abb201bcd6843b6f))
+* updated workflow ([efb2ad6](https://github.com/MrUnfunny/demo_package/commit/efb2ad69ad6c783cdf41423afd086aa086ca6c0a))
+
 ## [1.3.2](https://github.com/MrUnfunny/demo_package/compare/v1.3.1...v1.3.2) (2021-08-19)
 
 
