@@ -6,26 +6,32 @@ on:
       - main
 
 jobs:
-  test:
+  release:
+    name: Release
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: dart-lang/setup-dart@v1.0
-        with:
-          sdk: stable
-      - name: Install dependencies
-        run: dart pub get
-      - name: Run VM tests
-        run: dart test --platform vm
+      # - name: Check package Pubspec
+      #   id: pubspec
+      #   run: |
+      #     set +e
+      #     git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep '${{ matrix.package }}/pubspec.yaml' &> /dev/null
+      #     echo ::set-output name=changed::$?
+      #     set -e
 
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - uses: cedx/setup-dart@v2
       - uses: actions/setup-node@v2
         with:
           node-version: 14
+        if: steps.pubspec.outputs.changed == 0
       - run: npm install -g "@semantic-release/changelog"
       - run: npm install -g "@semantic-release/git"
       - run: npm install -g "pub-semantic-release"
 
       - name: Bump version
+        # if: steps.pubspec.outputs.changed == 0
         run: |
           export NODE_PATH="$(npm root -g)"
           npx semantic-release@17
@@ -38,6 +44,7 @@ jobs:
         run: dart pub publish --dry-run
 
       - uses: sakebook/actions-flutter-pub-publisher@v1.3.1
+        # if: steps.pubspec.outputs.changed == 0
         with:
           package_directory: ${{ matrix.package }}
           credential: ${{ secrets.PUB_CREDENTIALS }}
