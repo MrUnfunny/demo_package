@@ -5,7 +5,7 @@ void main() {
   group('A group of tests', () {
     final awesome = Awesome();
 
-    test('First Test', () {
+    test('Sure Test', () {
       expect(awesome.isAwesome, isTrue);
     });
   });
