@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/MrUnfunny/demo_package/compare/v1.2.2...v1.3.0) (2021-08-19)
+
+
+### Features
+
+* updated configuration ([6943e21](https://github.com/MrUnfunny/demo_package/commit/6943e2159d5a8e90f6f932037058a12e4f159987))
+
 ## 1.0.0
 
 - Initial version.
@@ -16,3 +23,4 @@
 
 ## 1.2.1
 ## 1.2.2
+## 1.3.0
