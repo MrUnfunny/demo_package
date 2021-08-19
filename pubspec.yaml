@@ -1,6 +1,6 @@
 name: demo_package_project
 description: A demo dart project for testing.
-version: 1.2.0
+version: 1.2.1
 homepage: https://github.com/MrUnfunny/demo_package
 
 environment:
