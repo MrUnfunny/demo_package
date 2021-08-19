@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/MrUnfunny/demo_package/compare/v1.3.0...v1.3.1) (2021-08-19)
+
+
+### Bug Fixes
+
+* fixed workflow ([a090f9e](https://github.com/MrUnfunny/demo_package/commit/a090f9e621c5b81ee7f84a131c2e3996220389cc))
+
 # [1.3.0](https://github.com/MrUnfunny/demo_package/compare/v1.2.2...v1.3.0) (2021-08-19)
 
 
