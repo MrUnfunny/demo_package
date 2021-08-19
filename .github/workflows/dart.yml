@@ -1,14 +1,52 @@
-name: demo_package_project
+name: Dart CI
 
 on:
+  # Run on PRs and pushes to the master branch.
   push:
-    branches:
-      - main
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+env:
+  PUB_ENVIRONMENT: bot.github
 
 jobs:
-  publish:
+  # Check code formatting and static analysis on Ubuntu.
+  analyze:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        sdk: [stable]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1.0
+        with:
+          sdk: ${{ matrix.sdk }}
+      - id: install
+        name: Install dependencies
+        run: dart pub get
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+  # runs dart test
+  test:
+    needs: analyze
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1.0
+        with:
+          sdk: stable
+      - name: Install dependencies
+        run: dart pub get
+      - name: Run VM tests
+        run: dart test --platform vm
+
+  # release on Github and pub.dev
+  publish:
+    runs-on: ubuntu-20.04
+    steps:    
       - uses: actions/checkout@v2
       - uses: cedx/setup-dart@v2
       - uses: actions/setup-node@v2
@@ -22,9 +60,6 @@ jobs:
         run: |
           export NODE_PATH="$(npm root -g)"
           npx semantic-release@17
-          ls -lah
-          git status
-          cat pubspec.yaml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish to pub
@@ -36,7 +71,8 @@ jobs:
           credential: ${{ secrets.PUB_CREDENTIALS }}
           flutter_package: true
           skip_test: true
-
+        
+      - name: Commit updated pubspec and changelog files
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update pubspec and changelog
