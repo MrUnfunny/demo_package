@@ -45,7 +45,7 @@ jobs:
 
   # release on Github and pub.dev
   publish:
-    # needs: test
+    needs: test
     runs-on: ubuntu-20.04
     steps:    
       - uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
           export NODE_PATH="$(npm root -g)"
           npx semantic-release@17
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       - name: Publish to pub
         run: dart pub publish --dry-run
 
