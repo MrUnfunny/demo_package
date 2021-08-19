@@ -45,7 +45,7 @@ jobs:
 
   # release on Github and pub.dev
   publish:
-    needs: test
+    # needs: test
     runs-on: ubuntu-20.04
     steps:    
       - uses: actions/checkout@v2
@@ -55,7 +55,6 @@ jobs:
           node-version: 14
       - run: npm install -g "@semantic-release/changelog"
       - run: npm install -g "@semantic-release/git"
-      - run: npm install -g "pub-semantic-release"
 
       - name: Bump version
         run: |
